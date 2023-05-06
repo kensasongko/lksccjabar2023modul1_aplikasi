@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   });
 
   const clientResponse = await client.search({
-    index: process.env.TABLE_NAME,
+    index: process.env.INDEX_NAME,
     body: {
       query: {
         multi_match: {
