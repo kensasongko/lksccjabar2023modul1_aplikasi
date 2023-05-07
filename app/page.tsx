@@ -60,8 +60,8 @@ export default async function Home({params,
           <AddForm />
         </div>
 
-        {data && data.map((message:Message) => (
-          <div className="bg-white relative flex before:absolute m-4 shadow-lg rounded">
+        {data && data.map((message:Message, idx: number) => (
+          <div key={idx} className="bg-white relative flex before:absolute m-4 shadow-lg rounded">
             <div className="max-w-sm overflow-hidden">
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{message.title}</div>
