@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
         return credentialsProvider();
       },
     }),
-    node: 'https://8nbhvxfqx24jtu63qd6h.ap-southeast-1.aoss.amazonaws.com/',
+    node: process.env.OPENSEARCH_URL,
   });
 
   const clientResponse = await client.search({
