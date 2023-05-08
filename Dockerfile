@@ -5,7 +5,7 @@ WORKDIR /app
 # Installing nodejs packages/modules
 COPY package.json ./
 
-# NOTES: also copy the yarn.lock for consistency between developers
+# NOTES: also copy the package-lock.json for consistency between developers
 COPY package-lock.json ./
 RUN npm i
 
@@ -15,6 +15,9 @@ FROM public.ecr.aws/docker/library/node:18-alpine AS builder
 ARG TABLE_NAME
 ARG INDEX_NAME
 ARG BASE_URL
+ARG OPENSEARCH_URL
+ARG HOSTNAME
+ARG PORT
 
 WORKDIR /app
 COPY . .
@@ -32,5 +35,4 @@ COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/.next/standalone ./
 
 EXPOSE 80
-ENV PORT 80
 CMD ["node", "server.js"]
